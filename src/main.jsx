@@ -4,7 +4,6 @@ import './index.css';
 import { RouterProvider } from 'react-router/dom';
 import { createBrowserRouter } from 'react-router';
 import RootLayout from './layout/RootLayout';
-import Friends from './pages/friends/Friends';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Timeline from './pages/timeline/Timeline';
 import Stats from './pages/stats/Stats';
