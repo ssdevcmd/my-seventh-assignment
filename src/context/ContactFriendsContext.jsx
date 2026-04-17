@@ -1,15 +1,30 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from "react";
 
-const ContactFriendsContext = createContext();
+export const ContactFriendsContext = createContext();
 
-const ContactFriendsProvider = () => {
-    
+const ContactFriendsProvider = ({ children }) => {
+  const [timeline, setTimeline] = useState([]);
 
-    const data = {
-        name: 'Sani',
-        age: 28
-    }
-    return <ContactFriendsContext.Provider value={data}></ContactFriendsContext.Provider>
+  const addToTimeline = (type) => {
+    const newEvent = {
+      id: Date.now(),
+      type ,
+      time: new Date().toLocaleTimeString(),
+    };
+
+    setTimeline((prev) => [newEvent, ...prev]);
+  };
+
+  const data = {
+    timeline,
+    addToTimeline,
+  };
+
+  return (
+    <ContactFriendsContext.Provider value={data}>
+      {children}
+    </ContactFriendsContext.Provider>
+  );
 };
 
 export default ContactFriendsProvider;

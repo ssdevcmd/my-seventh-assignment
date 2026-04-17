@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, useParams } from 'react-router';
 import useFriend from '../../hooks/useFriend';
 import { RiseLoader } from 'react-spinners';
 import { MdNotificationsPaused } from 'react-icons/md';
@@ -8,6 +8,8 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { LuPhoneCall } from 'react-icons/lu';
 import { IoVideocamOutline } from 'react-icons/io5';
 import { BsChatLeftText } from 'react-icons/bs';
+import { toast } from 'react-toastify';
+import { ContactFriendsContext } from '../../context/ContactFriendsContext';
 
 const FriendDetails = () => {
     const { id } = useParams();
@@ -18,6 +20,9 @@ const FriendDetails = () => {
 
     const expectedFriend = friends.find((friend) => String(friend.id) === id);
     console.log(expectedFriend, 'expected friend');
+    5
+  const { addToTimeline, timeline } = useContext(ContactFriendsContext);
+
 
      if (loading) {
     return (
@@ -132,17 +137,32 @@ const FriendDetails = () => {
 
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
-      <button className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
+      <Link to={'/timeline'}
+       onClick={() => {
+    addToTimeline("call");
+    toast.success(`Call with ${expectedFriend.name}`);
+  }} 
+       className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
         <span className="text-sm"><LuPhoneCall /> Call</span>
-      </button>
+      </Link>
 
-      <button className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
+      <Link to={'/timeline'}
+            onClick={() => {
+    addToTimeline("text");
+    toast.success(`Text with ${expectedFriend.name}`);
+  }} 
+      className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
         <span className="text-sm"><BsChatLeftText />Text</span>
-      </button>
+      </Link>
 
-      <button className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
+      <Link to={'/timeline'}
+           onClick={() => {
+    addToTimeline("video");
+    toast.success(`Video with ${expectedFriend.name}`);
+  }} 
+      className="btn flex flex-col items-center gap-2 p-3 rounded-lg bg-gray-50">
         <span className="text-sm"><IoVideocamOutline />Video</span>
-      </button>
+      </Link>
 
     </div>
 
