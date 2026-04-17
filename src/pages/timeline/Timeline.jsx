@@ -32,7 +32,7 @@ const Timeline = () => {
   {timeline.map((item) => (
     <li key={item.id} className="p-2 bg-gray-100 rounded">
       <p className="font-semibold">{item.title}</p>
-      <p className="text-sm text-gray-500">{item.date} {item.time}</p>
+      <p className="text-sm text-gray-500">{item.date}</p>
     </li>
   ))}
 </ul>

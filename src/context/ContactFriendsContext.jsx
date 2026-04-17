@@ -7,14 +7,14 @@ const ContactFriendsProvider = ({ children }) => {
 
   const addToTimeline = (type, name) => {
     const newEvent = {
-  id: Date.now(),
   type,
   name,
-  date: new Date().toLocaleDateString(),
-  time: new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
+   date: new Date().toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
   }),
+
 };
    
 
