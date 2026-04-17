@@ -5,23 +5,24 @@ export const ContactFriendsContext = createContext();
 const ContactFriendsProvider = ({ children }) => {
   const [timeline, setTimeline] = useState([]);
 
-  const addToTimeline = (type) => {
+  const addToTimeline = (type, name) => {
     const newEvent = {
-      id: Date.now(),
-      type ,
-      time: new Date().toLocaleTimeString(),
-    };
+  id: Date.now(),
+  type,
+  name,
+  date: new Date().toLocaleDateString(),
+  time: new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  }),
+};
+   
 
-    setTimeline((prev) => [newEvent, ...prev]);
-  };
-
-  const data = {
-    timeline,
-    addToTimeline,
+    setTimeline((prev) => [...prev, newEvent]);
   };
 
   return (
-    <ContactFriendsContext.Provider value={data}>
+    <ContactFriendsContext.Provider value={{ timeline, addToTimeline }}>
       {children}
     </ContactFriendsContext.Provider>
   );

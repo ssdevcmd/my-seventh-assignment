@@ -7,7 +7,7 @@ const Timeline = () => {
   console.log(timeline, "details");
 
   return (
-    <div>
+    <div className="min-h-[70vh]">
       <h2 className="text-xl font-bold mb-4"> Timeline</h2>
 
       <label className="input">
@@ -28,13 +28,14 @@ const Timeline = () => {
       {timeline.length === 0 ? (
         <p>No activity yet</p>
       ) : (
-        <ul className="space-y-2">
-          {timeline.map((item) => (
-            <li key={item.id} className="p-2 bg-gray-100 rounded">
-              {item.type.toUpperCase()} - {item.time}
-            </li>
-          ))}
-        </ul>
+       <ul className="space-y-2">
+  {timeline.map((item) => (
+    <li key={item.id} className="p-2 bg-gray-100 rounded">
+      <p className="font-semibold">{item.title}</p>
+      <p className="text-sm text-gray-500">{item.date} {item.time}</p>
+    </li>
+  ))}
+</ul>
       )}
     </div>
   );
