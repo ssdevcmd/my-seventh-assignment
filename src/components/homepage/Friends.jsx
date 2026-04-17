@@ -1,35 +1,28 @@
-import React, { use, useEffect, useState } from 'react';
+import React from 'react';
 import FriendCard from '../ui/FriendCard';
+import { RiseLoader } from 'react-spinners';
+import useFriend from '../../hooks/useFriend';
 
-// const friendsPromise = fetch('/data.json').then((res) => res.json());
 
 const Friends = () => {
-    // const friends = use(friendsPromise);
-    // console.log(friends, 'friends data');
-    const [friends, setFriends] = useState([]);
-
-    useEffect(() =>{
-        const fetchData = async () => {
-            const res = await fetch('/data.json');
-            const data = await res.json();
-            console.log(data);
-            setFriends(data);
-        };
-        fetchData();
-    }, []);
-
+    const {friends, loading} = useFriend();
+    
     console.log(friends, 'list of friends');
+    console.log(loading, 'loading data');
 
     return (
         <div className='container mx-auto my-[60px]'>
             <h2 className='font-bold text-4xl text-[#1f2937] mb-10'>Your Friends</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+           {loading ?
+            (<div className='flex justify-center items-center'>
+                <RiseLoader color='#244d3f' />
+            </div>) : (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {
                 friends.map((friend, index) => {
                     return <FriendCard key={index} friend={friend}></FriendCard>
                 })
             }
-            </div>
+            </div>)}
         </div>
     );
 };

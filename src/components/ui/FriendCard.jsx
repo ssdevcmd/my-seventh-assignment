@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const FriendCard = ({friend}) => {
     return (
-       <div className="card bg-base-100 shadow-sm">
+       <Link to={`/friends/${friend.id}`} className="card bg-base-100 shadow-sm">
 
   <figure>
     <img
@@ -14,9 +15,9 @@ const FriendCard = ({friend}) => {
 
   <div className="card-body flex flex-col items-center text-center gap-2">
 
-    <h2 className="card-title">{friend.name}</h2>
+    <h2 className="card-title text-[#1f2937] font-bold text-2xl">{friend.name}</h2>
 
-    <p className="text-sm text-gray-500">
+    <p className="text-sm text-[#64748b]">
       {friend.days_since_contact} days ago
     </p>
     <div className="flex flex-wrap gap-2">
@@ -29,20 +30,22 @@ const FriendCard = ({friend}) => {
 
     <div className="flex flex-wrap gap-2">
      <span
-    className={`badge text-white text-lg ${
+  className={`badge text-white text-lg ${
     friend.status === "overdue"
       ? "badge-error"
+      : friend.status === "on-track"
+      ? "badge-success"
       : "badge-warning"
-     }`}
-     >
-     {friend.status}
-    </span>
+  }`}
+   >
+  {friend.status}
+</span>
       
 
     </div>
 
   </div>
-</div>
+</Link>
 
     );
 };
