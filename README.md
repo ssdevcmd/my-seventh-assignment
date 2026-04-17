@@ -1,16 +1,29 @@
-# React + Vite
+📌 project Name:
+ -> KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Short description
 
-Currently, two official plugins are available:
+KeenKeeper is a personal relationship tracking web app where users can manage interactions with friends, such as calls, texts, and videos. It records activity in a timeline and provides statistics chart to visualize engagement with different friends.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+⚙️ Technologies used:
+React.js
+React Router 
+Context API
+Tailwind CSS
+React Toastify
+React Chart
+React Icon
+JavaScript (ES6+)
 
-## React Compiler
+⭐ 3 key features of the project
+1. 📅 Activity Timeline
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tracks all interactions like calls, texts, and videos with timestamps in timeline.
 
-## Expanding the ESLint configuration
+2. 📊 Friendship Analytics
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Displays dynamic statistics of user interactions using visual data breakdown (calls vs texts vs video).
+
+3. 👥 Contact Interaction System
+
+Allows users to (Call, Text, Video, Meetup) with friends.
