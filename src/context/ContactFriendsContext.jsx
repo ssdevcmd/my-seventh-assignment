@@ -5,10 +5,13 @@ export const ContactFriendsContext = createContext();
 const ContactFriendsProvider = ({ children }) => {
   const [timeline, setTimeline] = useState([]);
 
-  const addToTimeline = (type, name) => {
+  const [sortingType, setSortingType] = useState('');
+
+  const addToTimeline = (type , name) => {
     const newEvent = {
-  type,
-  name,
+   id: Date.now(),
+   type, 
+   name,
    date: new Date().toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "long",
@@ -22,7 +25,7 @@ const ContactFriendsProvider = ({ children }) => {
   };
 
   return (
-    <ContactFriendsContext.Provider value={{ timeline, addToTimeline }}>
+    <ContactFriendsContext.Provider value={{ timeline, addToTimeline, sortingType, setSortingType }}>
       {children}
     </ContactFriendsContext.Provider>
   );

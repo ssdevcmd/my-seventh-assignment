@@ -1,41 +1,63 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContactFriendsContext } from "../../context/ContactFriendsContext";
+import callImg from '../../assets/call.png';
+import textImg from '../../assets/text.png';
+import videoImg from '../../assets/video.png';
 
 const Timeline = () => {
-  const { timeline } = useContext(ContactFriendsContext);
-
-  console.log(timeline, "details");
-
+  const { timeline, setSortingType } = useContext(ContactFriendsContext);
+ 
   return (
     <div className="min-h-[70vh]">
-      <h2 className="text-xl font-bold mb-4"> Timeline</h2>
+      <h2 className="text-xl font-bold mb-4 mt-5">Timeline</h2>
 
-      <label className="input">
-  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2.5"
-      fill="none"
-      stroke="currentColor"
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <path d="m21 21-4.3-4.3"></path>
-    </g>
-  </svg>
-  <input type="search" required placeholder="Filter timeline" />
-</label>
+      <div className="dropdown dropdown-bottom">
+        <div tabIndex={0} role="button" className="btn m-1">
+          Filter Timeline ⬇️
+        </div>
+
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"
+        >
+          <li><a onClick={() => setSortingType('call')}>Call</a></li>
+          <li><a onClick={() => setSortingType('text')}>Text</a></li>
+          <li><a onClick={() => setSortingType('video')}>Video</a></li>
+        </ul>
+      </div>
+
       {timeline.length === 0 ? (
-        <p>No activity yet</p>
+        <p className="font-bold text-4xl text-center mt-10">
+          No activity yet
+        </p>
       ) : (
-       <ul className="space-y-2">
-  {timeline.map((item) => (
-    <li key={item.id} className="p-2 bg-gray-100 rounded">
-      <p className="font-semibold">{item.title}</p>
-      <p className="text-sm text-gray-500">{item.date}</p>
-    </li>
-  ))}
-</ul>
+        <div className="space-y-3 mt-5">
+          {timeline.map((item) => (
+            <div key={item.id} className="p-4 bg-gray-100 rounded-lg shadow">
+              <p className="font-semibold">{item.name}</p>
+              <span className="text-xl flex items-center gap-2">
+         {item.type === "call" ? (
+          <>
+           <img src={callImg} alt="" className="w-[20px]"/>
+           Call
+          </>
+          ) : item.type === "text" ? (
+          <>
+          <img src={textImg} alt="" className="w-[20px]"/>
+        Text
+          </>
+         ) : item.type === "video" ? (
+          <>
+        <img src={videoImg} alt="" className="w-[20px]"/> Video
+        </>
+        ) : (
+         ""
+        )}
+       </span>
+              <p>{item.date}</p>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

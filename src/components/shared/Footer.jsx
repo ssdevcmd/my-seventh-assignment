@@ -32,7 +32,7 @@ const Footer = () => {
 
                 <hr className='border-dashed pt-2' />
                     <div className='flex justify-between text-[#fafafa]'>
-                    <span>© 2026 Digitools. All rights reserved.</span>
+                    <span>© 2026 KeenKeeper. All rights reserved.</span>
                     <span>Privacy Policy       Terms of Service Cookies</span>
                     </div>      
                 

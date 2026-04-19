@@ -1,17 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import errorImg from '../../assets/404-page-not-found-png.jpg'
+
 
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-5xl font-bold text-red-500">404</h1>
-      <p className="mt-4 text-lg">Page Not Found</p>
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+      <img src={errorImg} alt="" className="max-w-full animate-bounce">
+      </img>
 
-      <Link to="/">
-        <button className="mt-6 px-6 py-2 bg-green-500 text-white rounded-lg cursor-pointer hover:bg-red-600">
-          Go back to Home
-        </button>
-      </Link>
+      <p className="mt-4 text-xl text-gray-600">
+        Oops! Page not found
+      </p>
+
+      <a
+        href="/"
+        className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+      >
+        Go Home
+      </a>
     </div>
   );
 };
